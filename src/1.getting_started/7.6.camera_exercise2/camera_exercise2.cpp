@@ -244,10 +244,10 @@ int main()
 		glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
 		glBindVertexArray(vao);
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 100000; i++)
 		{
 			glm::mat4 model = glm::mat4(1.0f);
-			model = glm::translate(model, cubePositions[i]);
+			model = glm::translate(model, cubePositions[i % 10]);
 			float angle = 20.0f * i;
 			model = glm::rotate(model, angle * glm::radians(angle), glm::vec3(1.0f, 0.0f, 0.0f));
 			int modelLoc = glGetUniformLocation(ourShader.ID, "model");
@@ -357,9 +357,9 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	{
 		fov = 1.0f;
 	}
-	if (fov > 45.0f)
+	if (fov > 45000.0f)
 	{
-		fov = 45.0f;
+		fov = 45000.0f;
 	}
 }
 
