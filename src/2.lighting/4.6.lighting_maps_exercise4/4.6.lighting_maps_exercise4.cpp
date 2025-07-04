@@ -212,6 +212,7 @@ int main()
 		ourShader.setMat4("model", model);
 		ourShader.setVec3("lightPos", lightPos);
 		ourShader.setVec3("viewPos", camera.Position);
+		ourShader.setFloat("time", currentFrame);
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, diffuseMap);
