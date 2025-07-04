@@ -76,8 +76,8 @@ int main()
 
 	// build and compile our shader zprogram
 	// ------------------------------------
-	Shader ourShader("4.2.lighting_maps.vs", "4.2.lighting_maps.fs");
-	Shader lightShader("4.2.light_cube.vs", "4.2.light_cube.fs");
+	Shader ourShader("4.6.lighting_maps.vs", "4.6.lighting_maps.fs");
+	Shader lightShader("4.6.light_cube.vs", "4.6.light_cube.fs");
 
 	// set up vertex data (and buffer(s)) and configure vertex attributes
 	// ------------------------------------------------------------------
@@ -151,10 +151,12 @@ int main()
 	glEnableVertexAttribArray(0);
 
 	unsigned int diffuseMap = loadTexture(FileSystem::getPath("resources/textures/container2.png").c_str());
-	unsigned int specularMap = loadTexture(FileSystem::getPath("resources/textures/container2_specular.png").c_str());
+	unsigned int specularMap = loadTexture(FileSystem::getPath("resources/textures/container2_specular.png").c_str());	
+	unsigned int emissionMap = loadTexture(FileSystem::getPath("resources/textures/matrix.jpg").c_str());
 	ourShader.use();
 	ourShader.setInt("material.diffuse", 0);
 	ourShader.setInt("material.specular", 1);
+	ourShader.setInt("material.emission", 2);
 
 
 	lightShader.use();
@@ -192,7 +194,7 @@ int main()
 		//ourShader.setVec3("light.ambient", ambientColor);
 		//ourShader.setVec3("light.diffuse", diffuseColor);
 		// 	ourShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
-		ourShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+		ourShader.setVec3("light.ambient", 0.1f, 0.1f, 0.1f);
 		ourShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
 		ourShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 		ourShader.setVec3("material.specular", 1.0f, 1.0f, 1.0f);
@@ -215,6 +217,8 @@ int main()
 		glBindTexture(GL_TEXTURE_2D, diffuseMap);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, specularMap);
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, emissionMap);
 
 		// render boxes
 		glBindVertexArray(VAO);

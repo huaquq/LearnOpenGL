@@ -76,8 +76,8 @@ int main()
 
 	// build and compile our shader zprogram
 	// ------------------------------------
-	Shader ourShader("4.2.lighting_maps.vs", "4.2.lighting_maps.fs");
-	Shader lightShader("4.2.light_cube.vs", "4.2.light_cube.fs");
+	Shader ourShader("4.5.lighting_maps.vs", "4.5.lighting_maps.fs");
+	Shader lightShader("4.5.light_cube.vs", "4.5.light_cube.fs");
 
 	// set up vertex data (and buffer(s)) and configure vertex attributes
 	// ------------------------------------------------------------------
@@ -151,7 +151,7 @@ int main()
 	glEnableVertexAttribArray(0);
 
 	unsigned int diffuseMap = loadTexture(FileSystem::getPath("resources/textures/container2.png").c_str());
-	unsigned int specularMap = loadTexture(FileSystem::getPath("resources/textures/container2_specular.png").c_str());
+	unsigned int specularMap = loadTexture(FileSystem::getPath("resources/textures/container2_specular_colored.png").c_str());
 	ourShader.use();
 	ourShader.setInt("material.diffuse", 0);
 	ourShader.setInt("material.specular", 1);
