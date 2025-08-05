@@ -62,6 +62,7 @@ else()
 endif(WIN32)
 
 set(CHAPTERS
+    0.perform
     1.getting_started
     2.lighting
     3.model_loading
@@ -70,7 +71,9 @@ set(CHAPTERS
     6.pbr
     7.in_practice
 )
-
+set(0.perform
+    0.1.testVAO
+)
 set(1.getting_started
     1.1.hello_window
     1.2.hello_window_clear
